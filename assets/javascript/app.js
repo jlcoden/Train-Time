@@ -1,4 +1,6 @@
-// Initialize Firebase
+
+
+
 var config = {
   apiKey: "AIzaSyAvGvnm7PZyMb3SEsfh-cc4Fofbd6EOR_s",
     authDomain: "train-scheduler-b3777.firebaseapp.com",
@@ -6,7 +8,7 @@ var config = {
     projectId: "train-scheduler-b3777",
     storageBucket: "",
     messagingSenderId: "59703338010",
-  //  appId: "1:174520390849:web:901f143da53350e2e2b040"
+    appId: "1:59703338010:web:0f3d4f26f4c719d4a19da3"
 };
 
 firebase.initializeApp(config);
@@ -76,7 +78,7 @@ tableMinutesAway.text(sv.minutesAway);
 row.append(tableTrainName);
 row.append(tableDestination);
 row.append(tableFrequency);
-row.append(tableNextArival);
+row.append(tableNextArrival);
 row.append(tableMinutesAway);
   
     $("#trains tbody").append(row);
@@ -84,9 +86,6 @@ row.append(tableMinutesAway);
 }, function(errorObject) {
   console.log("Errors handled: " + errorObject.code);
 });
-
-   
-   
 
    
    // Assume the following situations.
