@@ -1,5 +1,20 @@
 
+  $(document).ready(function() {
 
+var timepicker = new TimePicker('firstTrainTime-input', {
+  lang: 'en',
+  theme: 'dark'
+});
+timepicker.on('change', function(evt) {
+  
+  var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+  evt.element.value = value;
+
+});
+
+
+});
+   
 
 var config = {
   apiKey: "AIzaSyAvGvnm7PZyMb3SEsfh-cc4Fofbd6EOR_s",
@@ -26,18 +41,19 @@ var minutesAway = "";
 
 // Capture Button Click
 $("#add-train").on("click", function(event) {
+
   // Don't refresh the page!
   event.preventDefault();
+
+  
 
   // YOUR TASK!!!
   // Code in the logic for storing and retrieving the most recent train.
   // Don't forget to provide initial data to your Firebase database.
   trainName = $("#trainName-input").val().trim();
   destination = $("#destination-input").val().trim();
-  firstTrainTime = $("#firstTrainTime-input").val().trim();
-  frequency = $("#frequency-input").val().trim();
-
-
+  firstTrainTime = moment($("#firstTrainTime-input").val().trim(), "HH:mm").format("HH:mm");
+  frequency = moment($("#frequency-input").val().trim(), "mm").format("mm");
 
   database.ref().push({
     trainName: trainName,
@@ -47,6 +63,7 @@ $("#add-train").on("click", function(event) {
   });
 
 });
+
 
 // Firebase watcher + initial loader HINT: .on("value")
 database.ref().on("child_added", function(snapshot) {
@@ -87,7 +104,7 @@ row.append(tableMinutesAway);
   console.log("Errors handled: " + errorObject.code);
 });
 
-   
+
    // Assume the following situations.
 
     // (TEST 1)
