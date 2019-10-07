@@ -3,18 +3,20 @@
         
         <head>
         
-          <meta charset="UTF-8">
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
           <title>Train Scheduler!</title>
         
-          <!-- Bootstrap -->
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+     
+   <!-- Bootstrap -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-          <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-          <link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+   <link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
 
-      
-
+                <!--Link to custom CSS-->
+          <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
+          
         </head>
         
         <body>
@@ -25,8 +27,8 @@
         
             <!-- Jumbotron -->
             <div class="jumbotron">
-              <h1 class="text-center">Anytime is Train Time</h1>
-              <h2 class="text-center">Choo Choo. Chee Chee.</h2>
+              <h1 class="text-center">Train Destination and Arrivals</h1>
+              <h2 class="text-center">See the World by Train!</h2>
             </div>
             <div class="row">
         
@@ -74,8 +76,11 @@
                       </div>
                       <div class="form-group row">
                         <label for="firstTrainTime-input">First Train Time (HH:mm-military time)</label>
-                        <input class="form-control" id="firstTrainTime-input" type="text" placeholder="Time">
-                      </div>
+                        <input class="form-control input-small" id="firstTrainTime-input" type="time" required="required" placeholder="HH:mm"  min="00:00" max="24:00" class ="firstTrainTime-input">
+                        <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-time"></i>
+                        </span>
+                    </div>
                       <div class="form-group row">
                         <label for="frequency-input">Frequency (min)</label>
                         <input class="form-control" id="frequency-input" type="number">
@@ -91,14 +96,14 @@
           </div>
 
            <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery.js"></script>
+           <script src="https://code.jquery.com/jquery.js"></script>
 
-  <!-- LINKS FOR FIREBASE GO HERE -->
-  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
-  <script src="assets/javascript/app.js"></script> 
-  <script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
-
+           <!-- LINKS FOR FIREBASE GO HERE -->
+           <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+           <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+           <script src="assets/javascript/app.js"></script> 
+           <script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+         
 </body>
 
 </html>
