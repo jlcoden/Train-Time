@@ -33,11 +33,26 @@ $(document).ready(function() {
   // Initial Values
   var trainName = "";
   var destination = "";
-  var firstTrainTime = ""; 
   var frequency = 0;
   var nextArrival = "";
   var minutesAway = ""; 
+
+
+
+
+  var firstTrainTime = document.getElementById('firstTrainTime-input');
   
+  
+   firstTrainTime.addEventListener("input", function (event) {
+     event.preventDefault();
+     if (firstTrainTime != (/^([01]\d|2[0-3]):([0-5]\d)$/)) {
+     console.log('please enter time in 24 hour format');
+     } else {
+       console.log("that's valid");
+     }
+
+  });
+
   // Capture Button Click
   $("#add-train").on("click", function(event) {
   
@@ -61,7 +76,7 @@ $(document).ready(function() {
   
     // Current Time
     var currentTime = moment();
-    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+    console.log("CURRENT TIME: " + moment(currentTime).format("H:HH"));
   
     // Difference between the times
     var diffTime = moment().diff(moment(firstTrainTimeConverted), "minutes");
@@ -77,7 +92,7 @@ $(document).ready(function() {
     console.log(minutesAway); 
    // Next Train
     var nextTrain = moment().add(minutesTillTrain, "minutes");
-    nextArrival =("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+    nextArrival =("ARRIVAL TIME: " + moment(nextTrain).format("H:HH"));
     console.log(nextArrival); 
   
   
@@ -133,46 +148,3 @@ $(document).ready(function() {
     console.log("Errors handled: " + errorObject.code);
   });
   
-  
-  
-  
-     // Assume the following situations.
-  
-      // (TEST 1)
-      // First Train of the Day is 3:00 AM
-      // Assume Train comes every 3 minutes.
-      // Assume the current time is 3:16 AM....
-      // What time would the next train be...? (Use your brain first)
-      // It would be 3:18 -- 2 minutes away
-  
-      // (TEST 2)
-      // First Train of the Day is 3:00 AM
-      // Assume Train comes every 7 minutes.
-      // Assume the current time is 3:16 AM....
-      // What time would the next train be...? (Use your brain first)
-      // It would be 3:21 -- 5 minutes away
-  
-  
-      // ==========================================================
-  
-      // Solved Mathematically
-      // Test case 1:
-      // 16 - 00 = 16
-      // 16 % 3 = 1 (Modulus is the remainder)
-      // 3 - 1 = 2 minutes away
-      // 2 + 3:16 = 3:18
-  
-      // Solved Mathematically
-      // Test case 2:
-      // 16 - 00 = 16
-      // 16 % 7 = 2 (Modulus is the remainder)
-      // 7 - 2 = 5 minutes away
-      // 5 + 3:16 = 3:21
-  
-      // // Assumptions
-      // var tFrequency = 3;
-  
-      // // Time is 3:30 AM
-     
-      // // First Time (pushed back 1 year to make sure it comes before current time)
-      
