@@ -1,21 +1,4 @@
-$(document).ready(function() {
-
-  var timepicker = new TimePicker('firstTrainTime-input', {
-    lang: 'en',
-    theme: 'dark'
-  });
-  timepicker.on('change', function(evt) {
-    
-    var value = (evt.hour || '00') + ':' + (evt.minute || '00');
-    evt.element.value = value;
-  
-  });
-  
-  
-  });
-     
-  
-  var config = {
+var config = {
     apiKey: "AIzaSyAvGvnm7PZyMb3SEsfh-cc4Fofbd6EOR_s",
       authDomain: "train-scheduler-b3777.firebaseapp.com",
       databaseURL: "https://train-scheduler-b3777.firebaseio.com",
@@ -38,20 +21,19 @@ $(document).ready(function() {
   var minutesAway = ""; 
 
 
-
-
-  var firstTrainTime = document.getElementById('firstTrainTime-input');
+  $(document).ready(function() {
+    var regex = /([01]?[0-9]|2[0-3]):([0-5][0-9])/;
+    $('#firstTrainTime-input').keyup(function(){
+      var val = $(this).val();
+      if(val != regex) {
+           val = val.replace(/[^0-9\:]/g,'');
+      }
+      $(this).val(val); 
   
-  
-   firstTrainTime.addEventListener("input", function (event) {
-     event.preventDefault();
-     if (firstTrainTime != (/^([01]\d|2[0-3]):([0-5]\d)$/)) {
-     console.log('please enter time in 24 hour format');
-     } else {
-       console.log("that's valid");
-     }
-
+    });
+    
   });
+
 
   // Capture Button Click
   $("#add-train").on("click", function(event) {
@@ -76,15 +58,15 @@ $(document).ready(function() {
   
     // Current Time
     var currentTime = moment();
-    console.log("CURRENT TIME: " + moment(currentTime).format("H:HH"));
+    //console.log("CURRENT TIME: " + moment(currentTime).format("H:HH"));
   
     // Difference between the times
     var diffTime = moment().diff(moment(firstTrainTimeConverted), "minutes");
-    console.log("DIFFERENCE IN TIME: " + diffTime);
+    //console.log("DIFFERENCE IN TIME: " + diffTime);
   
     // Time apart (remainder)
     var remainder = diffTime % frequency;
-    console.log(remainder);
+   // console.log(remainder);
   
     // Minute Until Train
     var minutesTillTrain = frequency - remainder;
