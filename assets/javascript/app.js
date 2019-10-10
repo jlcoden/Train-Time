@@ -128,7 +128,7 @@ database.ref().on(
     var tableFrequency = $("<td>");
     var tableNextArrival = $("<td>");
     var tableMinutesAway = $("<td>");
-    var remove = $(
+    var tableRemove = $(
       "<td class='text-center'><button class='trainArrival btn btn-danger btn-xs' data-remove='" +
         key +
         "'>X</button></td>"
@@ -143,7 +143,7 @@ database.ref().on(
     row.append(tableFrequency);
     row.append(tableNextArrival);
     row.append(tableMinutesAway);
-    row.append(remove);
+    row.append(tableRemove);
 
     $("#trains tbody").append(row);
     // Handle the errors
